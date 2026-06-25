@@ -109,6 +109,23 @@ button:disabled {
   padding: 9px 12px;
 }
 
+.status-live {
+  border-color: #9dd6ad;
+  background: var(--green-soft);
+  color: #126734;
+}
+
+.status-fallback {
+  border-color: #efd08e;
+  background: var(--amber-soft);
+  color: var(--amber);
+}
+
+.status-fallback .status-dot {
+  background: var(--amber);
+  box-shadow: 0 0 0 4px rgba(170, 106, 0, 0.13);
+}
+
 .status-dot {
   width: 9px;
   height: 9px;

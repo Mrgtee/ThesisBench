@@ -20,6 +20,19 @@ export default function ThesisBenchClient() {
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [analysisMs, setAnalysisMs] = useState<number | null>(null);
+
+  const parserStatus = result?.parsed.parser === "bitget-qwen"
+    ? "Bitget Qwen live"
+    : result
+      ? "Offline fallback"
+      : "Analyzer ready";
+  const parserStatusClass = result?.parsed.parser === "bitget-qwen"
+    ? "status-live"
+    : result
+      ? "status-fallback"
+      : "";
+  const latencyLabel = analysisMs ? ` · ${(analysisMs / 1000).toFixed(1)}s` : "";
 
   const paperTrades = useMemo(() => {
     if (!result?.verdict.paperTrade) return [];
@@ -29,6 +42,8 @@ export default function ThesisBenchClient() {
   async function analyze() {
     setIsLoading(true);
     setError(null);
+    setAnalysisMs(null);
+    const startedAt = performance.now();
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
@@ -43,6 +58,7 @@ export default function ThesisBenchClient() {
       const body = await response.json();
       if (!response.ok) throw new Error(body.error || "Analysis failed.");
       setResult(body as AnalysisResult);
+      setAnalysisMs(Math.round(performance.now() - startedAt));
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Analysis failed.");
     } finally {
@@ -70,9 +86,9 @@ export default function ThesisBenchClient() {
           <h1>ThesisBench</h1>
           <p>Falsifiability layer for US stock AI trading agents.</p>
         </div>
-        <div className="status-stack">
+        <div className={`status-stack ${parserStatusClass}`}>
           <span className="status-dot" />
-          <span>Bitget Qwen server route</span>
+          <span>{parserStatus}{latencyLabel}</span>
         </div>
       </header>
 
