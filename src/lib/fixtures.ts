@@ -19,6 +19,7 @@ const BASE_PRICES: Record<SupportedTicker, number> = {
   AMZN: 138,
   SPY: 476,
   QQQ: 402,
+  SPCX: 154.54,
 };
 
 const TICKER_SEEDS: Record<SupportedTicker, number> = {
@@ -30,6 +31,7 @@ const TICKER_SEEDS: Record<SupportedTicker, number> = {
   AMZN: 71,
   SPY: 83,
   QQQ: 97,
+  SPCX: 109,
 };
 
 const EARNINGS_DATES = [
@@ -242,7 +244,7 @@ function earningsImpulse(ticker: SupportedTicker, date: string): number {
 }
 
 function fedImpulse(ticker: SupportedTicker, date: string): number {
-  if (ticker !== "SPY" && ticker !== "QQQ") return 0;
+  if (ticker !== "SPY" && ticker !== "QQQ" && ticker !== "SPCX") return 0;
   const event = fedEvents.find((candidate) => {
     const gap = Math.floor(
       (toDate(date).getTime() - toDate(candidate.date).getTime()) / 86_400_000,
@@ -250,7 +252,7 @@ function fedImpulse(ticker: SupportedTicker, date: string): number {
     return gap >= 1 && gap <= 5;
   });
   if (!event) return 0;
-  const beta = ticker === "QQQ" ? 1.35 : 1;
+  const beta = ticker === "SPCX" ? 1.8 : ticker === "QQQ" ? 1.35 : 1;
   if (event.stance === "dovish") return 0.0065 * beta;
   if (event.stance === "hawkish") return -0.006 * beta;
   return 0.0008 * beta;
@@ -263,15 +265,15 @@ export function generatePriceHistory(ticker: SupportedTicker): PriceBar[] {
 
   tradingDates().forEach((date, index) => {
     const open = close;
-    const drift = ticker === "SPY" || ticker === "QQQ" ? 0.00025 : 0.00045;
-    const cycle = Math.sin(index / 34 + TICKER_SEEDS[ticker]) * 0.003;
-    const noise = (random() - 0.5) * (ticker === "TSLA" ? 0.026 : 0.016);
+    const drift = ticker === "SPY" || ticker === "QQQ" ? 0.00025 : ticker === "SPCX" ? 0.00065 : 0.00045;
+    const cycle = Math.sin(index / 34 + TICKER_SEEDS[ticker]) * (ticker === "SPCX" ? 0.005 : 0.003);
+    const noise = (random() - 0.5) * (ticker === "SPCX" ? 0.032 : ticker === "TSLA" ? 0.026 : 0.016);
     const impulse = earningsImpulse(ticker, date) + fedImpulse(ticker, date);
     const nextClose = Math.max(5, open * (1 + drift + cycle + noise + impulse));
     const spread = Math.abs(nextClose - open) + open * (0.006 + random() * 0.012);
     const high = Math.max(open, nextClose) + spread * 0.42;
     const low = Math.max(1, Math.min(open, nextClose) - spread * 0.38);
-    const volumeBase = ticker === "SPY" || ticker === "QQQ" ? 65_000_000 : 45_000_000;
+    const volumeBase = ticker === "SPCX" ? 78_000_000 : ticker === "SPY" || ticker === "QQQ" ? 65_000_000 : 45_000_000;
 
     bars.push({
       date,
@@ -307,6 +309,7 @@ export const dataManifest: DataManifest = {
   notes: [
     "Cached deterministic fixtures keep the hackathon demo runnable without data keys.",
     "The engine treats events as available only after their event date and trades at the next available session.",
+    "SPCX is included as a high-momentum newly public asset through momentum-breakout analogs, not earnings analogs.",
     "Live data adapters can replace these fixtures without changing the core verdict API.",
   ],
 };

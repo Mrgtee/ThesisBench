@@ -7,11 +7,12 @@ export const SUPPORTED_TICKERS = [
   "AMZN",
   "SPY",
   "QQQ",
+  "SPCX",
 ] as const;
 
 export type SupportedTicker = (typeof SUPPORTED_TICKERS)[number];
 
-export type EventType = "earnings_surprise" | "fed_signal";
+export type EventType = "earnings_surprise" | "fed_signal" | "momentum_breakout";
 
 export type TradeDirection = "LONG" | "SHORT" | "HOLD";
 

@@ -85,8 +85,11 @@ export function normalizeParsedThesis(
   parser: ParsedThesis["parser"],
 ): ParsedThesis {
   const fallback = fallbackParseThesis(input);
-  const requestedTicker = fallback.requestedTicker ?? detectUnsupportedTicker(input.thesis);
   const rawTicker = String(raw.ticker ?? fallback.ticker).toUpperCase();
+  const requestedTicker =
+    fallback.requestedTicker ??
+    (rawTicker && !TICKER_SET.has(rawTicker) && !TICKER_STOP_WORDS.has(rawTicker) ? rawTicker : undefined) ??
+    detectUnsupportedTicker(input.thesis);
   const ticker = TICKER_SET.has(rawTicker) ? (rawTicker as SupportedTicker) : fallback.ticker;
   const rawEventType = String(raw.eventType ?? raw.event_type ?? fallback.eventType);
   const eventType = normalizeEventType(rawEventType, ticker, fallback.eventType);
@@ -150,6 +153,18 @@ function inferEventType(text: string, ticker: SupportedTicker): EventType {
   ) {
     return "fed_signal";
   }
+  if (
+    ticker === "SPCX" ||
+    text.includes("MOMENTUM") ||
+    text.includes("BREAKOUT") ||
+    text.includes("TOP-PERFORM") ||
+    text.includes("TOP PERFORM") ||
+    text.includes("SURGE") ||
+    text.includes("RALLY") ||
+    text.includes("IPO")
+  ) {
+    return "momentum_breakout";
+  }
   return "earnings_surprise";
 }
 
@@ -188,6 +203,16 @@ function normalizeEventType(value: string, ticker: SupportedTicker, fallback: Ev
   const normalized = value.toLowerCase().replaceAll("-", "_");
   if (normalized.includes("fed") || normalized.includes("fomc") || ticker === "SPY" || ticker === "QQQ") {
     return "fed_signal";
+  }
+  if (
+    normalized.includes("momentum") ||
+    normalized.includes("breakout") ||
+    normalized.includes("trend") ||
+    normalized.includes("technical") ||
+    normalized.includes("ipo") ||
+    ticker === "SPCX"
+  ) {
+    return "momentum_breakout";
   }
   if (normalized.includes("earning") || normalized.includes("eps")) return "earnings_surprise";
   return fallback;

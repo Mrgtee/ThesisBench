@@ -42,14 +42,26 @@ describe("thesis parser", () => {
     expect(parsed.confidence).toBeCloseTo(0.88);
   });
 
-  it("marks explicit unsupported tickers instead of silently normalizing them", () => {
+  it("routes SPCX price-action theses to momentum breakout evidence", () => {
     const parsed = fallbackParseThesis({
-      thesis: "SPCX has strong momentum, buy SPCX for 5 days.",
+      thesis: "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+      asOfDate: "2026-06-25",
+    });
+
+    expect(parsed.unsupportedAsset).toBeUndefined();
+    expect(parsed.ticker).toBe("SPCX");
+    expect(parsed.eventType).toBe("momentum_breakout");
+    expect(parsed.direction).toBe("LONG");
+  });
+
+  it("marks explicit unknown tickers instead of silently normalizing them", () => {
+    const parsed = fallbackParseThesis({
+      thesis: "ABCD has strong momentum, buy ABCD for 5 days.",
       asOfDate: "2026-06-25",
     });
 
     expect(parsed.unsupportedAsset).toBe(true);
-    expect(parsed.requestedTicker).toBe("SPCX");
+    expect(parsed.requestedTicker).toBe("ABCD");
     expect(parsed.unsupportedReason).toContain("Supported assets");
   });
 
@@ -59,7 +71,8 @@ describe("thesis parser", () => {
       baseInput,
     );
 
-    expect(parsed.ticker).toBe("NVDA");
+    expect(parsed.unsupportedAsset).toBe(true);
+    expect(parsed.requestedTicker).toBe("GME");
     expect(parsed.horizonDays).toBe(20);
   });
 });

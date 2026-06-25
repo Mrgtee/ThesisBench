@@ -24,7 +24,13 @@ const inputs: ThesisInput[] = [
     riskProfile: "balanced",
   },
   {
-    thesis: "A vague rumor says a random stock may go up soon.",
+    thesis: "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+    asOfDate: "2026-06-25",
+    startingBalance: 10_000,
+    riskProfile: "balanced",
+  },
+  {
+    thesis: "A vague rumor says ABCD may go up soon.",
     asOfDate: "2026-06-25",
     startingBalance: 10_000,
     riskProfile: "conservative",

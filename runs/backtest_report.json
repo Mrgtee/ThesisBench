@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T11:06:58.732Z",
+  "generatedAt": "2026-06-25T12:00:48.023Z",
   "methodology": "Each sample thesis is parsed with the deterministic fallback, matched to cached historical analogs, and compared against a naive thesis-following agent on the same analog set.",
   "samples": [
     {
@@ -99,7 +99,39 @@
       }
     },
     {
-      "thesis": "A vague rumor says a random stock may go up soon.",
+      "thesis": "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+      "ticker": "SPCX",
+      "eventType": "momentum_breakout",
+      "direction": "LONG",
+      "verdict": "ALLOW",
+      "evidence": {
+        "sampleSize": 24,
+        "medianReturnPct": 1.34,
+        "averageReturnPct": 1.53,
+        "hitRatePct": 83.3,
+        "costAdjustedEdgePct": 1.34,
+        "bestReturnPct": 7.38,
+        "worstReturnPct": -2.7
+      },
+      "naive": {
+        "trades": 24,
+        "endingBalance": 14325.44,
+        "pnlPct": 43.25,
+        "maxDrawdownPct": 2.7,
+        "hitRatePct": 83.3
+      },
+      "thesisBench": {
+        "trades": 20,
+        "endingBalance": 15067.64,
+        "pnlPct": 50.68,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 100,
+        "blockedTrades": 4,
+        "reducedTrades": 2
+      }
+    },
+    {
+      "thesis": "A vague rumor says ABCD may go up soon.",
       "ticker": "NVDA",
       "eventType": "earnings_surprise",
       "direction": "HOLD",

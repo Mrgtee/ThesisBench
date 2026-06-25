@@ -22,8 +22,8 @@ ThesisBench is a pre-trade evidence layer. It accepts a natural-language trading
 
 ## MVP Scope
 
-- Event types: earnings surprise and Fed signal.
-- Assets: `NVDA`, `TSLA`, `AAPL`, `MSFT`, `META`, `AMZN`, `SPY`, `QQQ`.
+- Event types: earnings surprise, Fed signal, and momentum breakout.
+- Assets: `NVDA`, `TSLA`, `AAPL`, `MSFT`, `META`, `AMZN`, `SPY`, `QQQ`, `SPCX`.
 - Trading mode: paper trading only.
 - Data mode: cached judge-runnable fixtures, with optional live Qwen parsing.
 - Demo mode: no login, no API key required for fallback parser and cached evidence.

@@ -30,9 +30,26 @@ describe("falsifiability engine", () => {
     });
   });
 
-  it("blocks SPCX because it is outside the cached asset universe", () => {
+  it("supports SPCX through momentum-breakout analogs", () => {
+    const spcxInput = {
+      thesis: "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+      asOfDate: "2026-06-25",
+      startingBalance: 10_000,
+      riskProfile: "balanced" as const,
+    };
+    const parsed = fallbackParseThesis(spcxInput);
+    const result = analyzeParsedThesis(spcxInput, parsed);
+
+    expect(result.parsed.ticker).toBe("SPCX");
+    expect(result.parsed.eventType).toBe("momentum_breakout");
+    expect(result.parsed.unsupportedAsset).toBeUndefined();
+    expect(result.verdict.evidence.sampleSize).toBeGreaterThanOrEqual(8);
+    expect(result.verdict.paperTrade?.asset).toBe("SPCX");
+  });
+
+  it("blocks unknown assets because they are outside the cached universe", () => {
     const unsupportedInput = {
-      thesis: "SPCX has strong momentum, buy SPCX for 5 days.",
+      thesis: "ABCD has strong momentum, buy ABCD for 5 days.",
       asOfDate: "2026-06-25",
       startingBalance: 10_000,
       riskProfile: "balanced" as const,
@@ -40,11 +57,11 @@ describe("falsifiability engine", () => {
     const parsed = fallbackParseThesis(unsupportedInput);
     const result = analyzeParsedThesis(unsupportedInput, parsed);
 
-    expect(result.parsed.requestedTicker).toBe("SPCX");
+    expect(result.parsed.requestedTicker).toBe("ABCD");
     expect(result.verdict.verdict).toBe("BLOCK");
     expect(result.verdict.evidence.sampleSize).toBe(0);
     expect(result.verdict.paperTrade).toBeUndefined();
-    expect(result.verdict.reason).toContain("SPCX is outside");
+    expect(result.verdict.reason).toContain("ABCD is outside");
   });
 
   it("does not look ahead when creating analog entry dates", () => {

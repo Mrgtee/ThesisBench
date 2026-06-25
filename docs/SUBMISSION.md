@@ -6,7 +6,7 @@ ThesisBench is a falsifiability layer for US stock AI trading agents. We built i
 
 The core hypothesis is simple: event-driven US stock trades should be filtered by historical analog evidence before an agent can act. A statement like "NVDA beat earnings, buy for five days" should become a structured event hypothesis, be compared against similar past earnings events, and only then produce a paper-trade decision.
 
-ThesisBench uses Bitget Qwen to parse natural-language stock theses into strict JSON: ticker, event type, direction, horizon, claim, and confidence. The engine then runs a cached event study over earnings surprise and Fed-signal events. It returns `ALLOW`, `REDUCE_SIZE`, or `BLOCK` based on sample size, median cost-adjusted edge, and hit rate.
+ThesisBench uses Bitget Qwen to parse natural-language stock theses into strict JSON: ticker, event type, direction, horizon, claim, and confidence. The engine then runs a cached event study over earnings surprise, Fed-signal, and momentum-breakout events. It returns `ALLOW`, `REDUCE_SIZE`, or `BLOCK` based on sample size, median cost-adjusted edge, and hit rate.
 
 This solves a real workflow problem for AI stock agents: it turns confident storytelling into falsifiable pre-trade evidence.
 

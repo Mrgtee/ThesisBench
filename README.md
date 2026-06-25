@@ -23,8 +23,8 @@ AI trading agents can produce confident explanations like "NVDA beat earnings, b
 
 ## Supported MVP Scope
 
-- Assets: `NVDA`, `TSLA`, `AAPL`, `MSFT`, `META`, `AMZN`, `SPY`, `QQQ`.
-- Event types: earnings surprise and Fed signal.
+- Assets: `NVDA`, `TSLA`, `AAPL`, `MSFT`, `META`, `AMZN`, `SPY`, `QQQ`, `SPCX`.
+- Event types: earnings surprise, Fed signal, and momentum breakout.
 - Trading mode: paper trading only.
 - Data mode: cached fixtures with optional Qwen parsing.
 
@@ -73,6 +73,7 @@ Generated files live in `runs/`:
 - `NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.`
 - `TSLA missed earnings estimates, short TSLA for 1 day.`
 - `Fed sounded dovish, buy QQQ for 5 days.`
+- `SPCX is a top-performing momentum breakout, buy SPCX for 5 days.`
 
 ## Safety
 

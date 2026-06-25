@@ -15,7 +15,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T11:06:58.730Z",
+    "generatedAt": "2026-06-25T12:00:48.016Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -247,7 +247,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T11:06:58.731Z",
+    "generatedAt": "2026-06-25T12:00:48.017Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -465,7 +465,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T11:06:58.732Z",
+    "generatedAt": "2026-06-25T12:00:48.019Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -641,7 +641,239 @@
   },
   {
     "input": {
-      "thesis": "A vague rumor says a random stock may go up soon.",
+      "thesis": "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+      "asOfDate": "2026-06-25",
+      "startingBalance": 10000,
+      "riskProfile": "balanced"
+    },
+    "parsed": {
+      "ticker": "SPCX",
+      "eventType": "momentum_breakout",
+      "direction": "LONG",
+      "horizonDays": 5,
+      "claim": "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+      "confidence": 0.62,
+      "parser": "offline-fallback"
+    },
+    "generatedAt": "2026-06-25T12:00:48.023Z",
+    "verdict": {
+      "verdict": "ALLOW",
+      "positionSizePct": 10,
+      "reason": "Allowed because 24 analogs show 1.34% median edge after costs with 83.3% hit rate.",
+      "evidence": {
+        "sampleSize": 24,
+        "medianReturnPct": 1.34,
+        "averageReturnPct": 1.53,
+        "hitRatePct": 83.3,
+        "costAdjustedEdgePct": 1.34,
+        "bestReturnPct": 7.38,
+        "worstReturnPct": -2.7
+      },
+      "analogs": [
+        {
+          "eventId": "NVDA-momentum-2026-06-04",
+          "ticker": "NVDA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-04",
+          "entryDate": "2026-06-05",
+          "exitDate": "2026-06-12",
+          "direction": "LONG",
+          "entryPrice": 977.43,
+          "exitPrice": 1008.34,
+          "rawReturnPct": 3.16,
+          "costAdjustedReturnPct": 3.04,
+          "descriptor": "NVDA 20-day momentum 20.88% before entry"
+        },
+        {
+          "eventId": "TSLA-momentum-2026-06-04",
+          "ticker": "TSLA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-04",
+          "entryDate": "2026-06-05",
+          "exitDate": "2026-06-12",
+          "direction": "LONG",
+          "entryPrice": 341.37,
+          "exitPrice": 334.93,
+          "rawReturnPct": -1.89,
+          "costAdjustedReturnPct": -2.01,
+          "descriptor": "TSLA 20-day momentum 14.81% before entry"
+        },
+        {
+          "eventId": "NVDA-momentum-2026-06-03",
+          "ticker": "NVDA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-03",
+          "entryDate": "2026-06-04",
+          "exitDate": "2026-06-11",
+          "direction": "LONG",
+          "entryPrice": 967.09,
+          "exitPrice": 1007.59,
+          "rawReturnPct": 4.19,
+          "costAdjustedReturnPct": 4.07,
+          "descriptor": "NVDA 20-day momentum 19.14% before entry"
+        },
+        {
+          "eventId": "TSLA-momentum-2026-06-03",
+          "ticker": "TSLA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-03",
+          "entryDate": "2026-06-04",
+          "exitDate": "2026-06-11",
+          "direction": "LONG",
+          "entryPrice": 340.71,
+          "exitPrice": 337.4,
+          "rawReturnPct": -0.97,
+          "costAdjustedReturnPct": -1.09,
+          "descriptor": "TSLA 20-day momentum 15.99% before entry"
+        },
+        {
+          "eventId": "NVDA-momentum-2026-06-02",
+          "ticker": "NVDA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-02",
+          "entryDate": "2026-06-03",
+          "exitDate": "2026-06-10",
+          "direction": "LONG",
+          "entryPrice": 967.2,
+          "exitPrice": 1003.43,
+          "rawReturnPct": 3.75,
+          "costAdjustedReturnPct": 3.63,
+          "descriptor": "NVDA 20-day momentum 19.31% before entry"
+        },
+        {
+          "eventId": "TSLA-momentum-2026-06-02",
+          "ticker": "TSLA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-02",
+          "entryDate": "2026-06-03",
+          "exitDate": "2026-06-10",
+          "direction": "LONG",
+          "entryPrice": 339.07,
+          "exitPrice": 337.85,
+          "rawReturnPct": -0.36,
+          "costAdjustedReturnPct": -0.48,
+          "descriptor": "TSLA 20-day momentum 16.22% before entry"
+        },
+        {
+          "eventId": "NVDA-momentum-2026-06-01",
+          "ticker": "NVDA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-01",
+          "entryDate": "2026-06-02",
+          "exitDate": "2026-06-09",
+          "direction": "LONG",
+          "entryPrice": 968.06,
+          "exitPrice": 1000.95,
+          "rawReturnPct": 3.4,
+          "costAdjustedReturnPct": 3.28,
+          "descriptor": "NVDA 20-day momentum 19.9% before entry"
+        },
+        {
+          "eventId": "TSLA-momentum-2026-06-01",
+          "ticker": "TSLA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-06-01",
+          "entryDate": "2026-06-02",
+          "exitDate": "2026-06-09",
+          "direction": "LONG",
+          "entryPrice": 328.06,
+          "exitPrice": 340.64,
+          "rawReturnPct": 3.83,
+          "costAdjustedReturnPct": 3.71,
+          "descriptor": "TSLA 20-day momentum 13.05% before entry"
+        },
+        {
+          "eventId": "NVDA-momentum-2026-05-29",
+          "ticker": "NVDA",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-05-29",
+          "entryDate": "2026-06-01",
+          "exitDate": "2026-06-08",
+          "direction": "LONG",
+          "entryPrice": 923.84,
+          "exitPrice": 993.14,
+          "rawReturnPct": 7.5,
+          "costAdjustedReturnPct": 7.38,
+          "descriptor": "NVDA 20-day momentum 15.41% before entry"
+        },
+        {
+          "eventId": "AMZN-momentum-2026-02-20",
+          "ticker": "AMZN",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-02-20",
+          "entryDate": "2026-02-23",
+          "exitDate": "2026-03-02",
+          "direction": "LONG",
+          "entryPrice": 203.38,
+          "exitPrice": 198.13,
+          "rawReturnPct": -2.58,
+          "costAdjustedReturnPct": -2.7,
+          "descriptor": "AMZN 20-day momentum 12.28% before entry"
+        },
+        {
+          "eventId": "AMZN-momentum-2026-02-19",
+          "ticker": "AMZN",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-02-19",
+          "entryDate": "2026-02-20",
+          "exitDate": "2026-02-27",
+          "direction": "LONG",
+          "entryPrice": 201.52,
+          "exitPrice": 203.58,
+          "rawReturnPct": 1.02,
+          "costAdjustedReturnPct": 0.9,
+          "descriptor": "AMZN 20-day momentum 12.51% before entry"
+        },
+        {
+          "eventId": "AMZN-momentum-2026-02-18",
+          "ticker": "AMZN",
+          "eventType": "momentum_breakout",
+          "eventDate": "2026-02-18",
+          "entryDate": "2026-02-19",
+          "exitDate": "2026-02-26",
+          "direction": "LONG",
+          "entryPrice": 201.52,
+          "exitPrice": 203.48,
+          "rawReturnPct": 0.97,
+          "costAdjustedReturnPct": 0.85,
+          "descriptor": "AMZN 20-day momentum 12.01% before entry"
+        }
+      ],
+      "paperTrade": {
+        "timestamp": "2026-06-25T20:05:00.000Z",
+        "asset": "SPCX",
+        "side": "LONG",
+        "price": 321.96,
+        "size": 3.106,
+        "balanceBefore": 10000,
+        "balanceAfter": 9998.8,
+        "balanceChange": -1.2,
+        "verdict": "ALLOW",
+        "reason": "Allowed because 24 analogs show 1.34% median edge after costs with 83.3% hit rate."
+      },
+      "comparison": {
+        "naive": {
+          "trades": 24,
+          "endingBalance": 14325.44,
+          "pnlPct": 43.25,
+          "maxDrawdownPct": 2.7,
+          "hitRatePct": 83.3
+        },
+        "thesisBench": {
+          "trades": 20,
+          "endingBalance": 15067.64,
+          "pnlPct": 50.68,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 100,
+          "blockedTrades": 4,
+          "reducedTrades": 2
+        }
+      }
+    }
+  },
+  {
+    "input": {
+      "thesis": "A vague rumor says ABCD may go up soon.",
       "asOfDate": "2026-06-25",
       "startingBalance": 10000,
       "riskProfile": "conservative"
@@ -651,15 +883,18 @@
       "eventType": "earnings_surprise",
       "direction": "HOLD",
       "horizonDays": 5,
-      "claim": "A vague rumor says a random stock may go up soon.",
+      "claim": "A vague rumor says ABCD may go up soon.",
       "confidence": 0.62,
-      "parser": "offline-fallback"
+      "parser": "offline-fallback",
+      "requestedTicker": "ABCD",
+      "unsupportedAsset": true,
+      "unsupportedReason": "ABCD is outside ThesisBench's cached MVP asset universe. Supported assets are NVDA, TSLA, AAPL, MSFT, META, AMZN, SPY, QQQ, SPCX."
     },
-    "generatedAt": "2026-06-25T11:06:58.732Z",
+    "generatedAt": "2026-06-25T12:00:48.023Z",
     "verdict": {
       "verdict": "BLOCK",
       "positionSizePct": 0,
-      "reason": "The thesis did not resolve to a directional paper trade.",
+      "reason": "ABCD is outside ThesisBench's cached MVP asset universe. Supported assets are NVDA, TSLA, AAPL, MSFT, META, AMZN, SPY, QQQ, SPCX.",
       "evidence": {
         "sampleSize": 0,
         "medianReturnPct": 0,

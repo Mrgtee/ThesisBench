@@ -9,14 +9,16 @@
     "META",
     "AMZN",
     "SPY",
-    "QQQ"
+    "QQQ",
+    "SPCX"
   ],
-  "priceRows": 9280,
+  "priceRows": 10440,
   "earningsEvents": 108,
   "fedEvents": 13,
   "notes": [
     "Cached deterministic fixtures keep the hackathon demo runnable without data keys.",
     "The engine treats events as available only after their event date and trades at the next available session.",
+    "SPCX is included as a high-momentum newly public asset through momentum-breakout analogs, not earnings analogs.",
     "Live data adapters can replace these fixtures without changing the core verdict API."
   ]
 }

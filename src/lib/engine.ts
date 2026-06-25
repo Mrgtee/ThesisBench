@@ -21,13 +21,21 @@ import type {
 const COST_PCT = 0.12;
 const DEFAULT_BALANCE = 10_000;
 
-export function analyzeParsedThesis(input: ThesisInput, parsed: ParsedThesis): AnalysisResult {
+export type AnalysisOptions = {
+  latestPrices?: Partial<Record<SupportedTicker, PriceBar>>;
+};
+
+export function analyzeParsedThesis(
+  input: ThesisInput,
+  parsed: ParsedThesis,
+  options: AnalysisOptions = {},
+): AnalysisResult {
   const analogs = buildAnalogs(input, parsed);
   const evidence = summarizeEvidence(analogs);
   const verdictKind = decideVerdict(parsed, evidence);
   const positionSizePct = positionSizeForVerdict(verdictKind, input.riskProfile ?? "balanced", evidence);
   const reason = explainVerdict(verdictKind, parsed, evidence);
-  const paperTrade = createPaperTrade(input, parsed, verdictKind, positionSizePct, reason);
+  const paperTrade = createPaperTrade(input, parsed, verdictKind, positionSizePct, reason, options);
   const comparison = compareStrategies(analogs, input.startingBalance ?? DEFAULT_BALANCE);
 
   return {
@@ -50,6 +58,7 @@ export function buildAnalogs(input: ThesisInput, parsed: ParsedThesis): EventAna
   if (parsed.unsupportedAsset) return [];
   if (parsed.direction === "HOLD") return [];
   if (parsed.eventType === "earnings_surprise") return buildEarningsAnalogs(input, parsed);
+  if (parsed.eventType === "momentum_breakout") return buildMomentumAnalogs(input, parsed);
   return buildFedAnalogs(input, parsed);
 }
 
@@ -85,6 +94,42 @@ function buildFedAnalogs(input: ThesisInput, parsed: ParsedThesis): EventAnalog[
     .map((event) => analogFromFed(event, targetTicker, parsed.direction as Exclude<TradeDirection, "HOLD">, parsed.horizonDays))
     .filter(isEventAnalog)
     .sort((a, b) => b.eventDate.localeCompare(a.eventDate));
+}
+
+function buildMomentumAnalogs(input: ThesisInput, parsed: ParsedThesis): EventAnalog[] {
+  const universe: SupportedTicker[] = parsed.ticker === "SPCX"
+    ? ["NVDA", "TSLA", "META", "AMZN", "QQQ", "SPCX"]
+    : [parsed.ticker];
+  const analogs: EventAnalog[] = [];
+
+  for (const ticker of universe) {
+    const rows = priceHistory[ticker].filter((bar) => bar.date < input.asOfDate);
+    for (let index = 20; index < rows.length - parsed.horizonDays - 1; index += 1) {
+      const lookback = rows[index - 20];
+      const signal = rows[index];
+      const trailingReturn = (signal.close / lookback.close - 1) * 100;
+      const isSignal = parsed.direction === "LONG" ? trailingReturn >= 12 : trailingReturn <= -10;
+      if (!isSignal) continue;
+      const entry = rows[index + 1];
+      const exit = rows[Math.min(rows.length - 1, index + 1 + parsed.horizonDays)];
+      analogs.push(
+        buildAnalog({
+          eventId: `${ticker}-momentum-${signal.date}`,
+          ticker,
+          eventType: "momentum_breakout",
+          eventDate: signal.date,
+          entry,
+          exit,
+          direction: parsed.direction as Exclude<TradeDirection, "HOLD">,
+          descriptor: `${ticker} 20-day momentum ${round(trailingReturn, 2)}% before entry`,
+        }),
+      );
+    }
+  }
+
+  return analogs
+    .sort((a, b) => b.eventDate.localeCompare(a.eventDate))
+    .slice(0, 24);
 }
 
 function analogFromEarnings(
@@ -236,9 +281,10 @@ function createPaperTrade(
   verdict: VerdictKind,
   positionSizePct: number,
   reason: string,
+  options: AnalysisOptions = {},
 ): PaperTrade | undefined {
   if (parsed.unsupportedAsset) return undefined;
-  const latest = latestBarAtOrBefore(parsed.ticker, input.asOfDate);
+  const latest = options.latestPrices?.[parsed.ticker] ?? latestBarAtOrBefore(parsed.ticker, input.asOfDate);
   if (!latest || parsed.direction === "HOLD") return undefined;
   const balanceBefore = input.startingBalance ?? DEFAULT_BALANCE;
   const notional = balanceBefore * (positionSizePct / 100);

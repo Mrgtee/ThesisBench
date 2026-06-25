@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { analyzeParsedThesis } from "@/lib/engine";
+import { fetchYahooLatestBar } from "@/lib/live-price";
 import { parseThesisWithQwen } from "@/lib/qwen";
 import type { ThesisInput } from "@/lib/types";
 
@@ -18,7 +19,12 @@ export async function POST(request: Request) {
       riskProfile: body.riskProfile === "conservative" ? "conservative" : "balanced",
     };
     const parsed = await parseThesisWithQwen(input);
-    return NextResponse.json(analyzeParsedThesis(input, parsed));
+    const liveLatest = await fetchYahooLatestBar(parsed.ticker);
+    return NextResponse.json(
+      analyzeParsedThesis(input, parsed, {
+        latestPrices: liveLatest ? { [parsed.ticker]: liveLatest } : undefined,
+      }),
+    );
   } catch (error) {
     return NextResponse.json(
       {
