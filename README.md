@@ -33,7 +33,7 @@ AI trading agents can produce confident explanations like "NVDA beat earnings, b
 Create `.env.local`:
 
 ```bash
-BITGET_QWEN_API_KEY=your-real-key
+BITGET_QWEN_API_KEY=
 BITGET_QWEN_BASE_URL=https://hackathon.bitgetops.com/v1
 BITGET_QWEN_MODEL=qwen3.6-plus
 BITGET_QWEN_FAST_MODEL=qwen3.6-flash
