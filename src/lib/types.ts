@@ -34,6 +34,9 @@ export type ParsedThesis = {
   claim: string;
   confidence: number;
   parser: "bitget-qwen" | "offline-fallback";
+  requestedTicker?: string;
+  unsupportedAsset?: boolean;
+  unsupportedReason?: string;
 };
 
 export type PriceBar = {

@@ -30,6 +30,23 @@ describe("falsifiability engine", () => {
     });
   });
 
+  it("blocks SPCX because it is outside the cached asset universe", () => {
+    const unsupportedInput = {
+      thesis: "SPCX has strong momentum, buy SPCX for 5 days.",
+      asOfDate: "2026-06-25",
+      startingBalance: 10_000,
+      riskProfile: "balanced" as const,
+    };
+    const parsed = fallbackParseThesis(unsupportedInput);
+    const result = analyzeParsedThesis(unsupportedInput, parsed);
+
+    expect(result.parsed.requestedTicker).toBe("SPCX");
+    expect(result.verdict.verdict).toBe("BLOCK");
+    expect(result.verdict.evidence.sampleSize).toBe(0);
+    expect(result.verdict.paperTrade).toBeUndefined();
+    expect(result.verdict.reason).toContain("SPCX is outside");
+  });
+
   it("does not look ahead when creating analog entry dates", () => {
     const parsed = fallbackParseThesis(input);
     const analogs = buildAnalogs(input, parsed);

@@ -9,6 +9,30 @@ import { SUPPORTED_TICKERS } from "./types";
 
 const TICKER_SET = new Set<string>(SUPPORTED_TICKERS);
 const HORIZONS = [1, 5, 20] as const;
+const TICKER_STOP_WORDS = new Set([
+  "AI",
+  "API",
+  "CPI",
+  "GDP",
+  "EPS",
+  "ETF",
+  "FED",
+  "FOMC",
+  "USD",
+  "US",
+  "BUY",
+  "SELL",
+  "LONG",
+  "SHORT",
+  "HOLD",
+  "BEAT",
+  "MISS",
+  "MISSED",
+  "RAISED",
+  "LOWERED",
+  "DAY",
+  "DAYS",
+]);
 
 type Horizon = (typeof HORIZONS)[number];
 
@@ -25,20 +49,28 @@ type RawParsedThesis = Partial<{
 
 export function fallbackParseThesis(input: ThesisInput): ParsedThesis {
   const text = input.thesis.toUpperCase();
-  const ticker = inferTicker(text);
-  const eventType = inferEventType(text, ticker);
+  const requestedTicker = detectUnsupportedTicker(input.thesis);
+  const inferredTicker = inferTicker(text);
+  const eventType = inferEventType(text, inferredTicker);
   const direction = inferDirection(text, eventType);
   const horizonDays = inferHorizon(text);
+  const ticker =
+    eventType === "earnings_surprise" && (inferredTicker === "SPY" || inferredTicker === "QQQ")
+      ? "NVDA"
+      : inferredTicker;
 
-  return {
-    ticker: eventType === "earnings_surprise" && (ticker === "SPY" || ticker === "QQQ") ? "NVDA" : ticker,
-    eventType,
-    direction,
-    horizonDays,
-    claim: input.thesis.trim() || "No thesis supplied.",
-    confidence: 0.62,
-    parser: "offline-fallback",
-  };
+  return withUnsupportedAsset(
+    {
+      ticker,
+      eventType,
+      direction,
+      horizonDays,
+      claim: input.thesis.trim() || "No thesis supplied.",
+      confidence: 0.62,
+      parser: "offline-fallback",
+    },
+    requestedTicker,
+  );
 }
 
 export function parseQwenContent(content: string, input: ThesisInput): ParsedThesis {
@@ -53,6 +85,7 @@ export function normalizeParsedThesis(
   parser: ParsedThesis["parser"],
 ): ParsedThesis {
   const fallback = fallbackParseThesis(input);
+  const requestedTicker = fallback.requestedTicker ?? detectUnsupportedTicker(input.thesis);
   const rawTicker = String(raw.ticker ?? fallback.ticker).toUpperCase();
   const ticker = TICKER_SET.has(rawTicker) ? (rawTicker as SupportedTicker) : fallback.ticker;
   const rawEventType = String(raw.eventType ?? raw.event_type ?? fallback.eventType);
@@ -62,14 +95,37 @@ export function normalizeParsedThesis(
   const confidence = clampNumber(Number(raw.confidence ?? fallback.confidence), 0, 1);
   const claim = String(raw.claim ?? fallback.claim).trim().slice(0, 240) || fallback.claim;
 
+  return withUnsupportedAsset(
+    {
+      ticker: eventType === "earnings_surprise" && (ticker === "SPY" || ticker === "QQQ") ? fallback.ticker : ticker,
+      eventType,
+      direction,
+      horizonDays,
+      claim,
+      confidence,
+      parser,
+    },
+    requestedTicker,
+  );
+}
+
+export function detectUnsupportedTicker(thesis: string): string | undefined {
+  const matches = thesis.match(/\$?[A-Z]{2,5}\b/g) ?? [];
+  for (const match of matches) {
+    const token = match.replace(/^\$/, "").toUpperCase();
+    if (TICKER_SET.has(token) || TICKER_STOP_WORDS.has(token)) continue;
+    return token;
+  }
+  return undefined;
+}
+
+function withUnsupportedAsset(parsed: ParsedThesis, requestedTicker: string | undefined): ParsedThesis {
+  if (!requestedTicker) return parsed;
   return {
-    ticker: eventType === "earnings_surprise" && (ticker === "SPY" || ticker === "QQQ") ? fallback.ticker : ticker,
-    eventType,
-    direction,
-    horizonDays,
-    claim,
-    confidence,
-    parser,
+    ...parsed,
+    requestedTicker,
+    unsupportedAsset: true,
+    unsupportedReason: `${requestedTicker} is outside ThesisBench's cached MVP asset universe. Supported assets are ${SUPPORTED_TICKERS.join(", ")}.`,
   };
 }
 

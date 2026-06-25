@@ -75,6 +75,9 @@ export default function ThesisBenchClient() {
     downloadFile("paper_trading_log.csv", paperTradesToCsv(paperTrades), "text/csv");
   }
 
+  const parsedTickerLabel = result?.parsed.unsupportedAsset
+    ? `${result.parsed.requestedTicker} (unsupported)`
+    : result?.parsed.ticker;
   const verdict = result?.verdict.verdict ?? "BLOCK";
   const evidence = result?.verdict.evidence;
   const comparison = result?.verdict.comparison;
@@ -144,7 +147,7 @@ export default function ThesisBenchClient() {
             <strong>{result?.parsed.parser ?? "waiting"}</strong>
           </div>
           <dl>
-            <Row label="Ticker" value={result?.parsed.ticker ?? "-"} />
+            <Row label="Ticker" value={parsedTickerLabel ?? "-"} />
             <Row label="Event" value={formatEvent(result?.parsed.eventType)} />
             <Row label="Direction" value={result?.parsed.direction ?? "-"} />
             <Row label="Horizon" value={result ? `${result.parsed.horizonDays} trading days` : "-"} />

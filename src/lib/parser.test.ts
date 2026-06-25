@@ -42,6 +42,17 @@ describe("thesis parser", () => {
     expect(parsed.confidence).toBeCloseTo(0.88);
   });
 
+  it("marks explicit unsupported tickers instead of silently normalizing them", () => {
+    const parsed = fallbackParseThesis({
+      thesis: "SPCX has strong momentum, buy SPCX for 5 days.",
+      asOfDate: "2026-06-25",
+    });
+
+    expect(parsed.unsupportedAsset).toBe(true);
+    expect(parsed.requestedTicker).toBe("SPCX");
+    expect(parsed.unsupportedReason).toContain("Supported assets");
+  });
+
   it("handles fenced JSON without accepting unsupported tickers", () => {
     const parsed = parseQwenContent(
       "```json\n{\"ticker\":\"GME\",\"eventType\":\"earnings_surprise\",\"direction\":\"LONG\",\"horizonDays\":20,\"claim\":\"unsupported\",\"confidence\":0.4}\n```",

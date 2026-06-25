@@ -47,6 +47,7 @@ export function analyzeParsedThesis(input: ThesisInput, parsed: ParsedThesis): A
 }
 
 export function buildAnalogs(input: ThesisInput, parsed: ParsedThesis): EventAnalog[] {
+  if (parsed.unsupportedAsset) return [];
   if (parsed.direction === "HOLD") return [];
   if (parsed.eventType === "earnings_surprise") return buildEarningsAnalogs(input, parsed);
   return buildFedAnalogs(input, parsed);
@@ -190,6 +191,7 @@ export function summarizeEvidence(analogs: EventAnalog[]): EvidenceSummary {
 }
 
 export function decideVerdict(parsed: ParsedThesis, evidence: EvidenceSummary): VerdictKind {
+  if (parsed.unsupportedAsset) return "BLOCK";
   if (parsed.direction === "HOLD") return "BLOCK";
   if (evidence.sampleSize < 8) return "BLOCK";
   if (evidence.costAdjustedEdgePct > 0.35 && evidence.hitRatePct >= 52) return "ALLOW";
@@ -214,6 +216,7 @@ function explainVerdict(
   parsed: ParsedThesis,
   evidence: EvidenceSummary,
 ): string {
+  if (parsed.unsupportedAsset) return parsed.unsupportedReason ?? "Blocked because the requested asset is outside the supported cached universe.";
   if (parsed.direction === "HOLD") return "The thesis did not resolve to a directional paper trade.";
   if (evidence.sampleSize < 8) {
     return `Blocked because only ${evidence.sampleSize} historical analogs were available; minimum is 8.`;
@@ -234,6 +237,7 @@ function createPaperTrade(
   positionSizePct: number,
   reason: string,
 ): PaperTrade | undefined {
+  if (parsed.unsupportedAsset) return undefined;
   const latest = latestBarAtOrBefore(parsed.ticker, input.asOfDate);
   if (!latest || parsed.direction === "HOLD") return undefined;
   const balanceBefore = input.startingBalance ?? DEFAULT_BALANCE;
