@@ -1,0 +1,693 @@
+[
+  {
+    "input": {
+      "thesis": "NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.",
+      "asOfDate": "2026-06-25",
+      "startingBalance": 10000,
+      "riskProfile": "balanced"
+    },
+    "parsed": {
+      "ticker": "NVDA",
+      "eventType": "earnings_surprise",
+      "direction": "LONG",
+      "horizonDays": 5,
+      "claim": "NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.",
+      "confidence": 0.62,
+      "parser": "offline-fallback"
+    },
+    "generatedAt": "2026-06-25T11:06:58.730Z",
+    "verdict": {
+      "verdict": "ALLOW",
+      "positionSizePct": 10,
+      "reason": "Allowed because 13 analogs show 15.06% median edge after costs with 84.6% hit rate.",
+      "evidence": {
+        "sampleSize": 13,
+        "medianReturnPct": 15.06,
+        "averageReturnPct": 14.51,
+        "hitRatePct": 84.6,
+        "costAdjustedEdgePct": 15.06,
+        "bestReturnPct": 29.43,
+        "worstReturnPct": -3.29
+      },
+      "analogs": [
+        {
+          "eventId": "NVDA-earnings-2026-05-27",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2026-05-27",
+          "entryDate": "2026-05-28",
+          "exitDate": "2026-06-04",
+          "direction": "LONG",
+          "entryPrice": 828.73,
+          "exitPrice": 977.43,
+          "rawReturnPct": 17.94,
+          "costAdjustedReturnPct": 17.82,
+          "descriptor": "NVDA EPS surprise 12.76% / guidance flat"
+        },
+        {
+          "eventId": "NVDA-earnings-2026-02-25",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2026-02-25",
+          "entryDate": "2026-02-26",
+          "exitDate": "2026-03-05",
+          "direction": "LONG",
+          "entryPrice": 816.38,
+          "exitPrice": 845.24,
+          "rawReturnPct": 3.54,
+          "costAdjustedReturnPct": 3.42,
+          "descriptor": "NVDA EPS surprise 3.84% / guidance flat"
+        },
+        {
+          "eventId": "NVDA-earnings-2025-05-28",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2025-05-28",
+          "entryDate": "2025-05-29",
+          "exitDate": "2025-06-05",
+          "direction": "LONG",
+          "entryPrice": 591.94,
+          "exitPrice": 712.48,
+          "rawReturnPct": 20.36,
+          "costAdjustedReturnPct": 20.24,
+          "descriptor": "NVDA EPS surprise 9.3% / guidance raised"
+        },
+        {
+          "eventId": "NVDA-earnings-2025-02-26",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2025-02-26",
+          "entryDate": "2025-02-27",
+          "exitDate": "2025-03-06",
+          "direction": "LONG",
+          "entryPrice": 513.59,
+          "exitPrice": 641.37,
+          "rawReturnPct": 24.88,
+          "costAdjustedReturnPct": 24.76,
+          "descriptor": "NVDA EPS surprise 13.96% / guidance raised"
+        },
+        {
+          "eventId": "NVDA-earnings-2024-11-20",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2024-11-20",
+          "entryDate": "2024-11-21",
+          "exitDate": "2024-11-28",
+          "direction": "LONG",
+          "entryPrice": 426.19,
+          "exitPrice": 462.42,
+          "rawReturnPct": 8.5,
+          "costAdjustedReturnPct": 8.38,
+          "descriptor": "NVDA EPS surprise 7.69% / guidance flat"
+        },
+        {
+          "eventId": "NVDA-earnings-2024-02-21",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2024-02-21",
+          "entryDate": "2024-02-22",
+          "exitDate": "2024-02-29",
+          "direction": "LONG",
+          "entryPrice": 372.52,
+          "exitPrice": 429.06,
+          "rawReturnPct": 15.18,
+          "costAdjustedReturnPct": 15.06,
+          "descriptor": "NVDA EPS surprise 5.58% / guidance raised"
+        },
+        {
+          "eventId": "NVDA-earnings-2023-11-21",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2023-11-21",
+          "entryDate": "2023-11-22",
+          "exitDate": "2023-11-29",
+          "direction": "LONG",
+          "entryPrice": 250.7,
+          "exitPrice": 324.77,
+          "rawReturnPct": 29.55,
+          "costAdjustedReturnPct": 29.43,
+          "descriptor": "NVDA EPS surprise 13.5% / guidance raised"
+        },
+        {
+          "eventId": "NVDA-earnings-2023-08-23",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2023-08-23",
+          "entryDate": "2023-08-24",
+          "exitDate": "2023-08-31",
+          "direction": "LONG",
+          "entryPrice": 221.42,
+          "exitPrice": 268.6,
+          "rawReturnPct": 21.31,
+          "costAdjustedReturnPct": 21.19,
+          "descriptor": "NVDA EPS surprise 11.05% / guidance raised"
+        },
+        {
+          "eventId": "NVDA-earnings-2023-05-24",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2023-05-24",
+          "entryDate": "2023-05-25",
+          "exitDate": "2023-06-01",
+          "direction": "LONG",
+          "entryPrice": 236.22,
+          "exitPrice": 234.54,
+          "rawReturnPct": -0.71,
+          "costAdjustedReturnPct": -0.83,
+          "descriptor": "NVDA EPS surprise 1.22% / guidance flat"
+        },
+        {
+          "eventId": "NVDA-earnings-2022-11-16",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2022-11-16",
+          "entryDate": "2022-11-17",
+          "exitDate": "2022-11-24",
+          "direction": "LONG",
+          "entryPrice": 217.63,
+          "exitPrice": 210.74,
+          "rawReturnPct": -3.17,
+          "costAdjustedReturnPct": -3.29,
+          "descriptor": "NVDA EPS surprise 1.76% / guidance lowered"
+        },
+        {
+          "eventId": "NVDA-earnings-2022-08-24",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2022-08-24",
+          "entryDate": "2022-08-25",
+          "exitDate": "2022-09-01",
+          "direction": "LONG",
+          "entryPrice": 205.59,
+          "exitPrice": 236.73,
+          "rawReturnPct": 15.15,
+          "costAdjustedReturnPct": 15.03,
+          "descriptor": "NVDA EPS surprise 11.47% / guidance flat"
+        },
+        {
+          "eventId": "NVDA-earnings-2022-05-25",
+          "ticker": "NVDA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2022-05-25",
+          "entryDate": "2022-05-26",
+          "exitDate": "2022-06-02",
+          "direction": "LONG",
+          "entryPrice": 142.98,
+          "exitPrice": 182.58,
+          "rawReturnPct": 27.7,
+          "costAdjustedReturnPct": 27.58,
+          "descriptor": "NVDA EPS surprise 13.29% / guidance raised"
+        }
+      ],
+      "paperTrade": {
+        "timestamp": "2026-06-25T20:05:00.000Z",
+        "asset": "NVDA",
+        "side": "LONG",
+        "price": 1008.34,
+        "size": 0.9917,
+        "balanceBefore": 10000,
+        "balanceAfter": 9998.8,
+        "balanceChange": -1.2,
+        "verdict": "ALLOW",
+        "reason": "Allowed because 13 analogs show 15.06% median edge after costs with 84.6% hit rate."
+      },
+      "comparison": {
+        "naive": {
+          "trades": 13,
+          "endingBalance": 55295.17,
+          "pnlPct": 452.95,
+          "maxDrawdownPct": 4.09,
+          "hitRatePct": 84.6
+        },
+        "thesisBench": {
+          "trades": 11,
+          "endingBalance": 18520.95,
+          "pnlPct": 85.21,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 100,
+          "blockedTrades": 2,
+          "reducedTrades": 0
+        }
+      }
+    }
+  },
+  {
+    "input": {
+      "thesis": "TSLA missed earnings estimates, short TSLA for 1 day.",
+      "asOfDate": "2026-06-25",
+      "startingBalance": 10000,
+      "riskProfile": "balanced"
+    },
+    "parsed": {
+      "ticker": "TSLA",
+      "eventType": "earnings_surprise",
+      "direction": "SHORT",
+      "horizonDays": 1,
+      "claim": "TSLA missed earnings estimates, short TSLA for 1 day.",
+      "confidence": 0.62,
+      "parser": "offline-fallback"
+    },
+    "generatedAt": "2026-06-25T11:06:58.731Z",
+    "verdict": {
+      "verdict": "ALLOW",
+      "positionSizePct": 10,
+      "reason": "Allowed because 11 analogs show 4.87% median edge after costs with 81.8% hit rate.",
+      "evidence": {
+        "sampleSize": 11,
+        "medianReturnPct": 4.87,
+        "averageReturnPct": 5.11,
+        "hitRatePct": 81.8,
+        "costAdjustedEdgePct": 4.87,
+        "bestReturnPct": 14.52,
+        "worstReturnPct": -4.92
+      },
+      "analogs": [
+        {
+          "eventId": "TSLA-earnings-2026-05-27",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2026-05-28",
+          "entryDate": "2026-05-29",
+          "exitDate": "2026-06-01",
+          "direction": "SHORT",
+          "entryPrice": 312.3,
+          "exitPrice": 328.06,
+          "rawReturnPct": -4.8,
+          "costAdjustedReturnPct": -4.92,
+          "descriptor": "TSLA EPS surprise 8.67% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2026-02-25",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2026-02-26",
+          "entryDate": "2026-02-27",
+          "exitDate": "2026-03-02",
+          "direction": "SHORT",
+          "entryPrice": 323.86,
+          "exitPrice": 335.79,
+          "rawReturnPct": -3.55,
+          "costAdjustedReturnPct": -3.67,
+          "descriptor": "TSLA EPS surprise 5.59% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2025-11-19",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2025-11-20",
+          "entryDate": "2025-11-21",
+          "exitDate": "2025-11-24",
+          "direction": "SHORT",
+          "entryPrice": 360.96,
+          "exitPrice": 345.53,
+          "rawReturnPct": 4.47,
+          "costAdjustedReturnPct": 4.35,
+          "descriptor": "TSLA EPS surprise -4.31% / guidance flat"
+        },
+        {
+          "eventId": "TSLA-earnings-2025-08-27",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2025-08-28",
+          "entryDate": "2025-08-29",
+          "exitDate": "2025-09-01",
+          "direction": "SHORT",
+          "entryPrice": 364.59,
+          "exitPrice": 339.35,
+          "rawReturnPct": 7.44,
+          "costAdjustedReturnPct": 7.32,
+          "descriptor": "TSLA EPS surprise -8.96% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2025-05-28",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2025-05-29",
+          "entryDate": "2025-05-30",
+          "exitDate": "2025-06-02",
+          "direction": "SHORT",
+          "entryPrice": 382.31,
+          "exitPrice": 374.57,
+          "rawReturnPct": 2.07,
+          "costAdjustedReturnPct": 1.95,
+          "descriptor": "TSLA EPS surprise -2.68% / guidance flat"
+        },
+        {
+          "eventId": "TSLA-earnings-2024-08-28",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2024-08-29",
+          "entryDate": "2024-08-30",
+          "exitDate": "2024-09-02",
+          "direction": "SHORT",
+          "entryPrice": 288.74,
+          "exitPrice": 275.02,
+          "rawReturnPct": 4.99,
+          "costAdjustedReturnPct": 4.87,
+          "descriptor": "TSLA EPS surprise -0.6% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2024-05-22",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2024-05-23",
+          "entryDate": "2024-05-24",
+          "exitDate": "2024-05-27",
+          "direction": "SHORT",
+          "entryPrice": 424.92,
+          "exitPrice": 375.64,
+          "rawReturnPct": 13.12,
+          "costAdjustedReturnPct": 13,
+          "descriptor": "TSLA EPS surprise -8.5% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2024-02-21",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2024-02-22",
+          "entryDate": "2024-02-23",
+          "exitDate": "2024-02-26",
+          "direction": "SHORT",
+          "entryPrice": 443.82,
+          "exitPrice": 417.97,
+          "rawReturnPct": 6.18,
+          "costAdjustedReturnPct": 6.06,
+          "descriptor": "TSLA EPS surprise -6.04% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2023-02-22",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2023-02-23",
+          "entryDate": "2023-02-24",
+          "exitDate": "2023-02-27",
+          "direction": "SHORT",
+          "entryPrice": 286.12,
+          "exitPrice": 263.01,
+          "rawReturnPct": 8.79,
+          "costAdjustedReturnPct": 8.67,
+          "descriptor": "TSLA EPS surprise -6.48% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2022-11-16",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2022-11-17",
+          "entryDate": "2022-11-18",
+          "exitDate": "2022-11-21",
+          "direction": "SHORT",
+          "entryPrice": 358.63,
+          "exitPrice": 312.82,
+          "rawReturnPct": 14.64,
+          "costAdjustedReturnPct": 14.52,
+          "descriptor": "TSLA EPS surprise -8.28% / guidance lowered"
+        },
+        {
+          "eventId": "TSLA-earnings-2022-08-24",
+          "ticker": "TSLA",
+          "eventType": "earnings_surprise",
+          "eventDate": "2022-08-25",
+          "entryDate": "2022-08-26",
+          "exitDate": "2022-08-29",
+          "direction": "SHORT",
+          "entryPrice": 386.19,
+          "exitPrice": 370.84,
+          "rawReturnPct": 4.14,
+          "costAdjustedReturnPct": 4.02,
+          "descriptor": "TSLA EPS surprise 0.01% / guidance lowered"
+        }
+      ],
+      "paperTrade": {
+        "timestamp": "2026-06-25T20:05:00.000Z",
+        "asset": "TSLA",
+        "side": "SHORT",
+        "price": 334.93,
+        "size": 2.9857,
+        "balanceBefore": 10000,
+        "balanceAfter": 9998.8,
+        "balanceChange": -1.2,
+        "verdict": "ALLOW",
+        "reason": "Allowed because 11 analogs show 4.87% median edge after costs with 81.8% hit rate."
+      },
+      "comparison": {
+        "naive": {
+          "trades": 11,
+          "endingBalance": 17013.76,
+          "pnlPct": 70.14,
+          "maxDrawdownPct": 8.41,
+          "hitRatePct": 81.8
+        },
+        "thesisBench": {
+          "trades": 9,
+          "endingBalance": 15530.2,
+          "pnlPct": 55.3,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 100,
+          "blockedTrades": 2,
+          "reducedTrades": 0
+        }
+      }
+    }
+  },
+  {
+    "input": {
+      "thesis": "Fed sounded dovish, buy QQQ for 5 days.",
+      "asOfDate": "2026-06-25",
+      "startingBalance": 10000,
+      "riskProfile": "balanced"
+    },
+    "parsed": {
+      "ticker": "QQQ",
+      "eventType": "fed_signal",
+      "direction": "LONG",
+      "horizonDays": 5,
+      "claim": "Fed sounded dovish, buy QQQ for 5 days.",
+      "confidence": 0.62,
+      "parser": "offline-fallback"
+    },
+    "generatedAt": "2026-06-25T11:06:58.732Z",
+    "verdict": {
+      "verdict": "ALLOW",
+      "positionSizePct": 10,
+      "reason": "Allowed because 9 analogs show 1.97% median edge after costs with 88.9% hit rate.",
+      "evidence": {
+        "sampleSize": 9,
+        "medianReturnPct": 1.97,
+        "averageReturnPct": 1.52,
+        "hitRatePct": 88.9,
+        "costAdjustedEdgePct": 1.97,
+        "bestReturnPct": 2.96,
+        "worstReturnPct": -1.71
+      },
+      "analogs": [
+        {
+          "eventId": "fed-2025-12-17",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2025-12-17",
+          "entryDate": "2025-12-18",
+          "exitDate": "2025-12-25",
+          "direction": "LONG",
+          "entryPrice": 470.83,
+          "exitPrice": 480.65,
+          "rawReturnPct": 2.09,
+          "costAdjustedReturnPct": 1.97,
+          "descriptor": "Fed neutral, 0 bps: Balanced risks and no strong directional policy signal."
+        },
+        {
+          "eventId": "fed-2025-03-19",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2025-03-19",
+          "entryDate": "2025-03-20",
+          "exitDate": "2025-03-27",
+          "direction": "LONG",
+          "entryPrice": 512.06,
+          "exitPrice": 527.85,
+          "rawReturnPct": 3.08,
+          "costAdjustedReturnPct": 2.96,
+          "descriptor": "Fed dovish, -25 bps: Labor cooling and inflation progress supported easier conditions."
+        },
+        {
+          "eventId": "fed-2024-12-18",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2024-12-18",
+          "entryDate": "2024-12-19",
+          "exitDate": "2024-12-26",
+          "direction": "LONG",
+          "entryPrice": 433.52,
+          "exitPrice": 441.41,
+          "rawReturnPct": 1.82,
+          "costAdjustedReturnPct": 1.7,
+          "descriptor": "Fed neutral, 0 bps: Committee emphasized patience and incoming data."
+        },
+        {
+          "eventId": "fed-2024-09-18",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2024-09-18",
+          "entryDate": "2024-09-19",
+          "exitDate": "2024-09-26",
+          "direction": "LONG",
+          "entryPrice": 477.57,
+          "exitPrice": 483.23,
+          "rawReturnPct": 1.19,
+          "costAdjustedReturnPct": 1.07,
+          "descriptor": "Fed dovish, -25 bps: Easier path signaled as inflation slowed."
+        },
+        {
+          "eventId": "fed-2024-06-12",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2024-06-12",
+          "entryDate": "2024-06-13",
+          "exitDate": "2024-06-20",
+          "direction": "LONG",
+          "entryPrice": 503.55,
+          "exitPrice": 506.53,
+          "rawReturnPct": 0.59,
+          "costAdjustedReturnPct": 0.47,
+          "descriptor": "Fed neutral, 0 bps: Inflation caution balanced against labor-market cooling."
+        },
+        {
+          "eventId": "fed-2024-03-20",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2024-03-20",
+          "entryDate": "2024-03-21",
+          "exitDate": "2024-03-28",
+          "direction": "LONG",
+          "entryPrice": 426.36,
+          "exitPrice": 438.95,
+          "rawReturnPct": 2.95,
+          "costAdjustedReturnPct": 2.83,
+          "descriptor": "Fed dovish, 0 bps: Growth resilient while cuts remained on the table."
+        },
+        {
+          "eventId": "fed-2023-12-13",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2023-12-13",
+          "entryDate": "2023-12-14",
+          "exitDate": "2023-12-21",
+          "direction": "LONG",
+          "entryPrice": 408.79,
+          "exitPrice": 417.86,
+          "rawReturnPct": 2.22,
+          "costAdjustedReturnPct": 2.1,
+          "descriptor": "Fed dovish, 0 bps: Policy path softened as inflation progress broadened."
+        },
+        {
+          "eventId": "fed-2023-06-14",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2023-06-14",
+          "entryDate": "2023-06-15",
+          "exitDate": "2023-06-22",
+          "direction": "LONG",
+          "entryPrice": 390.89,
+          "exitPrice": 400.35,
+          "rawReturnPct": 2.42,
+          "costAdjustedReturnPct": 2.3,
+          "descriptor": "Fed neutral, 0 bps: Pause with optionality for later hikes."
+        },
+        {
+          "eventId": "fed-2023-02-01",
+          "ticker": "QQQ",
+          "eventType": "fed_signal",
+          "eventDate": "2023-02-01",
+          "entryDate": "2023-02-02",
+          "exitDate": "2023-02-09",
+          "direction": "LONG",
+          "entryPrice": 386.09,
+          "exitPrice": 379.94,
+          "rawReturnPct": -1.59,
+          "costAdjustedReturnPct": -1.71,
+          "descriptor": "Fed neutral, 25 bps: Disinflation acknowledged but policy still data-dependent."
+        }
+      ],
+      "paperTrade": {
+        "timestamp": "2026-06-25T20:05:00.000Z",
+        "asset": "QQQ",
+        "side": "LONG",
+        "price": 415.99,
+        "size": 2.4039,
+        "balanceBefore": 10000,
+        "balanceAfter": 9998.8,
+        "balanceChange": -1.2,
+        "verdict": "ALLOW",
+        "reason": "Allowed because 9 analogs show 1.97% median edge after costs with 88.9% hit rate."
+      },
+      "comparison": {
+        "naive": {
+          "trades": 9,
+          "endingBalance": 11445.93,
+          "pnlPct": 14.46,
+          "maxDrawdownPct": 1.71,
+          "hitRatePct": 88.9
+        },
+        "thesisBench": {
+          "trades": 8,
+          "endingBalance": 11645.06,
+          "pnlPct": 16.45,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 100,
+          "blockedTrades": 1,
+          "reducedTrades": 0
+        }
+      }
+    }
+  },
+  {
+    "input": {
+      "thesis": "A vague rumor says a random stock may go up soon.",
+      "asOfDate": "2026-06-25",
+      "startingBalance": 10000,
+      "riskProfile": "conservative"
+    },
+    "parsed": {
+      "ticker": "NVDA",
+      "eventType": "earnings_surprise",
+      "direction": "HOLD",
+      "horizonDays": 5,
+      "claim": "A vague rumor says a random stock may go up soon.",
+      "confidence": 0.62,
+      "parser": "offline-fallback"
+    },
+    "generatedAt": "2026-06-25T11:06:58.732Z",
+    "verdict": {
+      "verdict": "BLOCK",
+      "positionSizePct": 0,
+      "reason": "The thesis did not resolve to a directional paper trade.",
+      "evidence": {
+        "sampleSize": 0,
+        "medianReturnPct": 0,
+        "averageReturnPct": 0,
+        "hitRatePct": 0,
+        "costAdjustedEdgePct": 0,
+        "bestReturnPct": 0,
+        "worstReturnPct": 0
+      },
+      "analogs": [],
+      "comparison": {
+        "naive": {
+          "trades": 0,
+          "endingBalance": 10000,
+          "pnlPct": 0,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 0
+        },
+        "thesisBench": {
+          "trades": 0,
+          "endingBalance": 10000,
+          "pnlPct": 0,
+          "maxDrawdownPct": 0,
+          "hitRatePct": 0,
+          "blockedTrades": 0,
+          "reducedTrades": 0
+        }
+      }
+    }
+  }
+]

@@ -9,7 +9,7 @@
     "build": "next build",
     "start": "next start",
     "test": "vitest run --passWithNoTests",
-    "evidence": "tsx scripts/generate-evidence.ts"
+    "evidence": "TMPDIR=/tmp tsx scripts/generate-evidence.ts"
   },
   "dependencies": {
     "next": "^16.0.10",

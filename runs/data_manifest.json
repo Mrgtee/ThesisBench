@@ -1,0 +1,22 @@
+{
+  "generatedAt": "2026-06-25T00:00:00.000Z",
+  "mode": "cached-fixtures",
+  "supportedTickers": [
+    "NVDA",
+    "TSLA",
+    "AAPL",
+    "MSFT",
+    "META",
+    "AMZN",
+    "SPY",
+    "QQQ"
+  ],
+  "priceRows": 9280,
+  "earningsEvents": 108,
+  "fedEvents": 13,
+  "notes": [
+    "Cached deterministic fixtures keep the hackathon demo runnable without data keys.",
+    "The engine treats events as available only after their event date and trades at the next available session.",
+    "Live data adapters can replace these fixtures without changing the core verdict API."
+  ]
+}

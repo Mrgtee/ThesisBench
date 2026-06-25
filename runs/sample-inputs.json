@@ -1,0 +1,26 @@
+[
+  {
+    "thesis": "NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.",
+    "asOfDate": "2026-06-25",
+    "startingBalance": 10000,
+    "riskProfile": "balanced"
+  },
+  {
+    "thesis": "TSLA missed earnings estimates, short TSLA for 1 day.",
+    "asOfDate": "2026-06-25",
+    "startingBalance": 10000,
+    "riskProfile": "balanced"
+  },
+  {
+    "thesis": "Fed sounded dovish, buy QQQ for 5 days.",
+    "asOfDate": "2026-06-25",
+    "startingBalance": 10000,
+    "riskProfile": "balanced"
+  },
+  {
+    "thesis": "A vague rumor says a random stock may go up soon.",
+    "asOfDate": "2026-06-25",
+    "startingBalance": 10000,
+    "riskProfile": "conservative"
+  }
+]

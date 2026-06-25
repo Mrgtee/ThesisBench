@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-06-25T11:06:58.732Z",
+  "methodology": "Each sample thesis is parsed with the deterministic fallback, matched to cached historical analogs, and compared against a naive thesis-following agent on the same analog set.",
+  "samples": [
+    {
+      "thesis": "NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.",
+      "ticker": "NVDA",
+      "eventType": "earnings_surprise",
+      "direction": "LONG",
+      "verdict": "ALLOW",
+      "evidence": {
+        "sampleSize": 13,
+        "medianReturnPct": 15.06,
+        "averageReturnPct": 14.51,
+        "hitRatePct": 84.6,
+        "costAdjustedEdgePct": 15.06,
+        "bestReturnPct": 29.43,
+        "worstReturnPct": -3.29
+      },
+      "naive": {
+        "trades": 13,
+        "endingBalance": 55295.17,
+        "pnlPct": 452.95,
+        "maxDrawdownPct": 4.09,
+        "hitRatePct": 84.6
+      },
+      "thesisBench": {
+        "trades": 11,
+        "endingBalance": 18520.95,
+        "pnlPct": 85.21,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 100,
+        "blockedTrades": 2,
+        "reducedTrades": 0
+      }
+    },
+    {
+      "thesis": "TSLA missed earnings estimates, short TSLA for 1 day.",
+      "ticker": "TSLA",
+      "eventType": "earnings_surprise",
+      "direction": "SHORT",
+      "verdict": "ALLOW",
+      "evidence": {
+        "sampleSize": 11,
+        "medianReturnPct": 4.87,
+        "averageReturnPct": 5.11,
+        "hitRatePct": 81.8,
+        "costAdjustedEdgePct": 4.87,
+        "bestReturnPct": 14.52,
+        "worstReturnPct": -4.92
+      },
+      "naive": {
+        "trades": 11,
+        "endingBalance": 17013.76,
+        "pnlPct": 70.14,
+        "maxDrawdownPct": 8.41,
+        "hitRatePct": 81.8
+      },
+      "thesisBench": {
+        "trades": 9,
+        "endingBalance": 15530.2,
+        "pnlPct": 55.3,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 100,
+        "blockedTrades": 2,
+        "reducedTrades": 0
+      }
+    },
+    {
+      "thesis": "Fed sounded dovish, buy QQQ for 5 days.",
+      "ticker": "QQQ",
+      "eventType": "fed_signal",
+      "direction": "LONG",
+      "verdict": "ALLOW",
+      "evidence": {
+        "sampleSize": 9,
+        "medianReturnPct": 1.97,
+        "averageReturnPct": 1.52,
+        "hitRatePct": 88.9,
+        "costAdjustedEdgePct": 1.97,
+        "bestReturnPct": 2.96,
+        "worstReturnPct": -1.71
+      },
+      "naive": {
+        "trades": 9,
+        "endingBalance": 11445.93,
+        "pnlPct": 14.46,
+        "maxDrawdownPct": 1.71,
+        "hitRatePct": 88.9
+      },
+      "thesisBench": {
+        "trades": 8,
+        "endingBalance": 11645.06,
+        "pnlPct": 16.45,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 100,
+        "blockedTrades": 1,
+        "reducedTrades": 0
+      }
+    },
+    {
+      "thesis": "A vague rumor says a random stock may go up soon.",
+      "ticker": "NVDA",
+      "eventType": "earnings_surprise",
+      "direction": "HOLD",
+      "verdict": "BLOCK",
+      "evidence": {
+        "sampleSize": 0,
+        "medianReturnPct": 0,
+        "averageReturnPct": 0,
+        "hitRatePct": 0,
+        "costAdjustedEdgePct": 0,
+        "bestReturnPct": 0,
+        "worstReturnPct": 0
+      },
+      "naive": {
+        "trades": 0,
+        "endingBalance": 10000,
+        "pnlPct": 0,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 0
+      },
+      "thesisBench": {
+        "trades": 0,
+        "endingBalance": 10000,
+        "pnlPct": 0,
+        "maxDrawdownPct": 0,
+        "hitRatePct": 0,
+        "blockedTrades": 0,
+        "reducedTrades": 0
+      }
+    }
+  ]
+}

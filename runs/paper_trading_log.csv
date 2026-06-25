@@ -1,0 +1,4 @@
+timestamp,asset,side,price,size,balance_before,balance_after,balance_change,verdict,reason
+2026-06-25T20:05:00.000Z,NVDA,LONG,1008.34,0.9917,10000,9998.8,-1.2,ALLOW,"Allowed because 13 analogs show 15.06% median edge after costs with 84.6% hit rate."
+2026-06-25T20:05:00.000Z,TSLA,SHORT,334.93,2.9857,10000,9998.8,-1.2,ALLOW,"Allowed because 11 analogs show 4.87% median edge after costs with 81.8% hit rate."
+2026-06-25T20:05:00.000Z,QQQ,LONG,415.99,2.4039,10000,9998.8,-1.2,ALLOW,"Allowed because 9 analogs show 1.97% median edge after costs with 88.9% hit rate."
