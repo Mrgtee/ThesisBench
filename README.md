@@ -35,6 +35,64 @@ ThesisBench solves this by forcing every thesis through an evidence gate before 
 6. Returns a verdict, position size, analog table, backtest comparison, and paper-trading log.
 7. Exports judge-reviewable JSON and CSV artifacts.
 
+## Agent Integration
+
+ThesisBench is also designed for other trading agents to integrate as a pre-trade evidence API. An agent can call the analyzer before it places, simulates, or recommends a trade. The agent does not need direct access to the Bitget Qwen key because parsing happens server-side.
+
+Endpoint:
+
+```txt
+POST /api/analyze
+```
+
+Example request:
+
+```json
+{
+  "thesis": "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
+  "asOfDate": "2026-06-27",
+  "startingBalance": 10000,
+  "riskProfile": "balanced"
+}
+```
+
+Core response contract:
+
+```json
+{
+  "parsed": {
+    "ticker": "SPCX",
+    "eventType": "momentum_breakout",
+    "direction": "LONG",
+    "horizonDays": 5
+  },
+  "verdict": {
+    "verdict": "ALLOW",
+    "positionSizePct": 12,
+    "reason": "Allowed because historical analogs show edge.",
+    "evidence": {
+      "sampleSize": 24,
+      "hitRatePct": 83.3,
+      "costAdjustedEdgePct": 1.34
+    },
+    "paperTrade": {
+      "asset": "SPCX",
+      "side": "LONG",
+      "price": 153.23,
+      "size": 7.831
+    }
+  }
+}
+```
+
+Recommended agent behavior:
+
+- `ALLOW`: the agent may continue with the paper trade using `positionSizePct`.
+- `REDUCE_SIZE`: the agent should trade smaller or request more evidence.
+- `BLOCK`: the agent should skip the trade and preserve the reason in its logs.
+
+This makes ThesisBench a falsifiability layer for agentic trading workflows: it does not replace the trading agent, but it forces the agent to prove whether its thesis has historical support before action.
+
 ## Supported MVP Universe
 
 | Category | Supported |
