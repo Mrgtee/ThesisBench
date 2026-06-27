@@ -15,7 +15,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T12:00:48.016Z",
+    "generatedAt": "2026-06-27T16:58:42.060Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -247,7 +247,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T12:00:48.017Z",
+    "generatedAt": "2026-06-27T16:58:42.061Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -465,7 +465,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T12:00:48.019Z",
+    "generatedAt": "2026-06-27T16:58:42.062Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -655,7 +655,7 @@
       "confidence": 0.62,
       "parser": "offline-fallback"
     },
-    "generatedAt": "2026-06-25T12:00:48.023Z",
+    "generatedAt": "2026-06-27T16:58:42.066Z",
     "verdict": {
       "verdict": "ALLOW",
       "positionSizePct": 10,
@@ -890,7 +890,7 @@
       "unsupportedAsset": true,
       "unsupportedReason": "ABCD is outside ThesisBench's cached MVP asset universe. Supported assets are NVDA, TSLA, AAPL, MSFT, META, AMZN, SPY, QQQ, SPCX."
     },
-    "generatedAt": "2026-06-25T12:00:48.023Z",
+    "generatedAt": "2026-06-27T16:58:42.066Z",
     "verdict": {
       "verdict": "BLOCK",
       "positionSizePct": 0,

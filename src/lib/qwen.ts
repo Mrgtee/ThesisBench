@@ -33,7 +33,7 @@ export async function parseThesisWithQwen(input: ThesisInput): Promise<ParsedThe
           {
             role: "system",
             content:
-              "You extract US stock trading theses into strict JSON. Return JSON only, no markdown. Valid tickers: NVDA, TSLA, AAPL, MSFT, META, AMZN, SPY, QQQ. Valid eventType values: earnings_surprise, fed_signal. Valid direction values: LONG, SHORT, HOLD. Valid horizonDays values: 1, 5, 20.",
+              "You extract US stock trading theses into strict JSON. Return JSON only, no markdown. Valid tickers: NVDA, TSLA, AAPL, MSFT, META, AMZN, SPY, QQQ, SPCX. Valid eventType values: earnings_surprise, fed_signal, momentum_breakout. Valid direction values: LONG, SHORT, HOLD. Valid horizonDays values: 1, 5, 20.",
           },
           {
             role: "user",

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T12:00:48.023Z",
+  "generatedAt": "2026-06-27T16:58:42.066Z",
   "methodology": "Each sample thesis is parsed with the deterministic fallback, matched to cached historical analogs, and compared against a naive thesis-following agent on the same analog set.",
   "samples": [
     {
