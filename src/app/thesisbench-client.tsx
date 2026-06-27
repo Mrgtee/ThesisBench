@@ -7,6 +7,7 @@ const EXAMPLES = [
   "NVDA beat earnings estimates and raised guidance, buy NVDA for 5 days.",
   "TSLA missed earnings estimates, short TSLA for 1 day.",
   "Fed sounded dovish, buy QQQ for 5 days.",
+  "SPCX is a top-performing momentum breakout, buy SPCX for 5 days.",
 ] as const;
 
 const VERDICT_LABELS: Record<VerdictKind, string> = {
