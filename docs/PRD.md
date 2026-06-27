@@ -45,7 +45,7 @@ ThesisBench is a pre-trade evidence layer. It accepts a natural-language trading
 
 ## Demo Script
 
-1. Open the public demo.
+1. Open the public demo: https://thesisbench.vercel.app.
 2. Enter: `NVDA beat earnings estimates, buy NVDA for 5 days.`
 3. Show Qwen/fallback structured extraction.
 4. Show historical analogs, median return, hit rate, and cost-adjusted edge.
@@ -56,7 +56,7 @@ ThesisBench is a pre-trade evidence layer. It accepts a natural-language trading
 ## Submission Checklist
 
 - Public GitHub repository.
-- Public demo link.
+- Public demo link: https://thesisbench.vercel.app.
 - README with setup and project description.
 - Sample inputs and outputs.
 - Paper-trading log.

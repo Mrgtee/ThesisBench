@@ -1,5 +1,7 @@
 # ThesisBench Submission Draft
 
+Public demo: [https://thesisbench.vercel.app](https://thesisbench.vercel.app)
+
 ## 1. Idea
 
 ThesisBench is a falsifiability layer for US stock AI trading agents. We built it because many AI agents can write convincing market narratives, but they often do not prove whether a thesis has historically worked before producing a trade.
@@ -14,7 +16,7 @@ This solves a real workflow problem for AI stock agents: it turns confident stor
 
 Completed:
 
-- Next.js dashboard with no-login demo flow.
+- Next.js dashboard with no-login demo flow at https://thesisbench.vercel.app.
 - Server-side Bitget Qwen integration path using `https://hackathon.bitgetops.com/v1`.
 - Deterministic offline parser fallback when no Qwen key is present.
 - Cached price, earnings, and Fed event fixtures for judge reproducibility.
@@ -28,7 +30,7 @@ Still missing / next steps:
 
 - Replace cached fixtures with live licensed US stock data adapters.
 - Add analyst upgrade/downgrade event type.
-- Publish a hosted demo URL and short demo video.
+- Record and publish a short demo video.
 
 Frameworks, models, APIs:
 

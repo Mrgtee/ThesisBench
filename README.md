@@ -4,6 +4,16 @@ ThesisBench is a pre-trade falsifiability layer for US stock AI trading agents, 
 
 Instead of letting an AI agent act on a confident market story, ThesisBench turns the story into a structured event hypothesis, tests it against historical analogs, and returns an evidence-backed decision: `ALLOW`, `REDUCE_SIZE`, or `BLOCK`.
 
+## Public Demo
+
+Live app: [https://thesisbench.vercel.app](https://thesisbench.vercel.app)
+
+Agent API endpoint:
+
+```txt
+POST https://thesisbench.vercel.app/api/analyze
+```
+
 ## Hackathon Track
 
 **US Stocks AI Trading / Open Innovation**
@@ -42,7 +52,7 @@ ThesisBench is also designed for other trading agents to integrate as a pre-trad
 Endpoint:
 
 ```txt
-POST /api/analyze
+POST https://thesisbench.vercel.app/api/analyze
 ```
 
 Example request:

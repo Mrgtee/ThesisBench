@@ -4,6 +4,8 @@
 
 ThesisBench is a standard Next.js app and can be deployed directly from GitHub.
 
+Current public URL: [https://thesisbench.vercel.app](https://thesisbench.vercel.app)
+
 Required production environment variables for live Qwen parsing:
 
 ```bash
